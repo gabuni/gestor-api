@@ -18,7 +18,9 @@
     "type": "git",
     "url": "https://github.com/gabuni/gestor-api.git"
   },
-  "dependencies": {},
+  "dependencies": {
+    "gulp-stylus": "^2.5.0"
+  },
   "devDependencies": {
     "connect-history-api-fallback": "0.0.4",
     "gulp": "^3.8.6",

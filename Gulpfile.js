@@ -4,6 +4,7 @@
 var gulp      = require('gulp'),
     connect   = require('gulp-connect'),
     nib       = require('nib'),
+    stylus    = require('gulp-stylus'),
     jshint    = require('gulp-jshint'),
     stylish   = require('jshint-stylish'),
     inject    = require('gulp-inject'),
@@ -89,6 +90,15 @@ gulp.task('wiredep', function () {
     .pipe(gulp.dest('./app'));
 });
 
+//---los cambios que hagamos en un fichero .styl de Stylus 
+//se vean reflejados como CSS en el navegador. 
+// Preprocesa archivos Stylus a CSS y recarga los cambios
+gulp.task('css', function() {
+ gulp.src('./app/stylesheets/main.styl')
+ .pipe(stylus({ use: nib() }))
+ .pipe(gulp.dest('./app/stylesheets'))
+ .pipe(connect.reload());
+});
 
 
 // Vigila cambios que se produzcan en el código
@@ -99,5 +109,6 @@ gulp.task('watch', function() {
   gulp.watch(['./bower.json'], ['wiredep']);
 });
 
-gulp.task('default', ['server', 'inject', 'wiredep', 'watch','jshint']);
+gulp.task('default', ['server', 'inject', 'wiredep', 'css', 'watch','jshint']);
 gulp.task('build', ['copy', 'inject']);
+

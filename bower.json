@@ -8,6 +8,7 @@
     "angular-route": "~1.2.21",
     "bootstrap-material-design": "~0.2.2",
     "angular-sanitize": "1.2.21",
-    "angular-bootstrap": "~0.14.3"
+    "angular-bootstrap": "~0.14.3",
+    "font-awesome": "fontawesome#^4.6.3"
   }
 }
