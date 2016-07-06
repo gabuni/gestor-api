@@ -7,25 +7,12 @@
   function config ($routeProvider) {
    
     $routeProvider
-      .when('/listado', {
-        templateUrl: 'templates/listado.tpl.html',
-        controller: 'WizardCtrl'
+      .when('/', {
+        templateUrl: 'templates/imagenes.tpl.html',
+        controller: 'ImgCtrl'
       })
-       .when('/detalle', {
-        templateUrl: 'templates/detalles.tpl.html',
-        controller: 'WizardCtrl'
-      })
-      .when('/inversion', {
-        templateUrl: 'templates/plan-pagos.tpl.html',
-        controller: 'WizardCtrl'
-      })
-         .when('/alumno', {
-        templateUrl: 'templates/inscripcion.tpl.html',
-        controller: 'WizardCtrl'
-      })
-  
-     
-     
+      
+        
 
       .otherwise({ reditrectTo : '/listado' });
 
@@ -34,10 +21,10 @@
 
 
   angular
-    .module('wizard', ['ngRoute','wizard.controllers','ui.bootstrap'])
+    .module('gestor', ['ngRoute','gestor.controllers','ui.bootstrap'])
     .config(config);
 
-   
+   //gestor es el identificador de la aplicacion 
 
 })();
 

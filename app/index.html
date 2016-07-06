@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="es-ES" ng-app="wizard" >
+<html lang="es-ES" ng-app="gestor" >
   <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"> 
@@ -17,7 +17,7 @@
     <!-- endbower -->
     <!-- inject:css -->
    
-    <link rel="stylesheet" href="/stylesheets/wizard.css">
+    <link rel="stylesheet" href="/stylesheets/main.css">
    
     <!-- endinject -->
     <link href='https://fonts.googleapis.com/css?family=Raleway:600' rel='stylesheet' type='text/css'>
@@ -40,7 +40,6 @@ III. Anatomía de una aplicación AngularJS.
   <body > 
   
 
-<div ng-controller="WizardCtrl" ng-include="template.nav"></div>
 
 <div ng-view="">
   
@@ -62,6 +61,8 @@ III. Anatomía de una aplicación AngularJS.
     <!-- endbuild -->
     <!-- build:js js/app.min.js -->
     <!-- inject:js -->
+   
+    <script src="/scripts/services.js"></script>
    
     <script src="/scripts/controllers.js"></script>
    
