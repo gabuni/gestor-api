@@ -1,9 +1,6 @@
 (function () {
   'use strict';
 
-
-
- 
   function config ($routeProvider) {
    
     $routeProvider
@@ -11,8 +8,6 @@
         templateUrl: 'templates/imagenes.tpl.html',
         controller: 'ImgCtrl'
       })
-      
-        
 
       .otherwise({ reditrectTo : '/listado' });
 

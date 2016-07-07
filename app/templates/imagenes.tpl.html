@@ -7,16 +7,12 @@
 			
 			<!-- PRUEBA PARA CARGAR UNA IMAGEN EN EL SERVIDOR -->
 			<h3>Cargar Imagen de Recurso</h3>
-			<form action="app/" method="POST" enctype="multipart/form-data">
-				<div class="form-group">
-					<label for="">Ingresar el #id del recurso:</label>
-	            	<input type="text" ng-model="subir.id" class="form-control" name="id_recurso_i" id="id_recurso_i" >
-				</div>
-
-				<label for="imagen">Imagen:</label>
-				<input type="file" ng-model="subir.imagen" name="imagen" id="imagen" />
+			<form action="" method="POST" ng-submit="uploaderFile()">
+				<label for="">Ingresar el #id del recurso:</label>
+            	<input type="text" ng-model="name" >
+				<input type="file" name="file" uploader-model="file">
 			
-				<input type="button" ng-click="btnSubir()" name="subir" value="Subir"/>
+				<input type="submit" value="Enviar"/>
 			</form>
 		</div>
 	</div>
