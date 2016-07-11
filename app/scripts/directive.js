@@ -1,23 +1,27 @@
-// (function () {
-//   'use strict';
+(function () {
+  'use strict';
 
-//  /***************************************************************/
-//   angular
-//     .module('gestor.directives', [])
-//     .controller('ImgCtrl',  ImgCtrl);
+ /***************************************************************/
+  angular
+    .module('gestor.directives', [])
+    .directive('uploaderModel', uploaderModel);
 
-//     .directive('uploaderModel', ["$parse", function ($parse) {
-//     	return {
-//     		restrict: 'A',
-//     		link: function (scope, iElement, iAttrs) {
-    			
-//     			iElement.on('change', function(e)
+    function uploaderModel ($parse)
+    {
+    	return {
+		restrict: 'A',
+		link: function (scope, iElement, iAttrs) 
+		{
+			iElement.on("change", function(e)
+			{
+				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]);
+			});
+		}
+		};
+    }
+    	
 
-//     				$parse(iAttrs.uploaderModel).assign(scope, iElement[0].files[0]); //esto tendra el campo te tipo file
+  })();
 
-//     			});	
-//     		}
-//     	};
-//     }])
 
-//   })();
+
