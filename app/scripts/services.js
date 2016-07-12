@@ -6,27 +6,14 @@
     .module('gestor.services', [])
     .constant('BaseUrl', 'http://localhost/api')
    //defino el servicio subir imagen factory + funcion
-    .factory('subirImagen', subirImagen)
     .service('upload', upload)
-    .service('insertarArticulo', insertarArticulo);
+    .service('addArticulo', addArticulo);
 
 
-    function subirImagen (BaseUrl){
-	
-	//codigo incial
-	 //    enviarImagen: function(formData, callback)
-	 //    {
-	 //    $http({
-	 //        method: "POST",
-	 //        headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-	 //        url: BaseUrl+'/v2/subir',
-	 //        data: $.param(formData)
-	 //    	});
-		// }
-	}
-
-	function upload ($http, $q) 
+  	function upload ($http, $q) 
 	{
+		//Este servicio utiliza la api que carga una imagen y redefine su tamaño
+		//$q directiva o servicio del core de Angular que contiene toda la funcionalidad de las promesas
 		this.uploadFile = function(file, name)
 		{
 			var deferred = $q.defer();
@@ -51,10 +38,30 @@
 		}	
 	}
 
-	function insertarArticulo($http) //$http con esta funcion accedo a la Api
+	function addArticulo($http, $q) //$http es un  servicio del core de angular, con el accedo a la Api
 	{
-		// return $http.get("http://localhost/api/v2/insertarFila");
-		console.log($http.get("http://localhost/api/v2/insertarFila")); 
+		
+		return{
+			getAll: getAll 
+		}	
+		//creamos la función getAll, esta función solicitará mediante una petición GET 
+		//la inserción de una fila. 
+		function getAll() 
+		{
+			var defered = $q.defer();
+			var promise = defered.promise;
+			//utilizamos el método get, este método realizará una petición de tipo GET a la URL que se le pasa como parámetro.
+			$http.get("http://localhost/api/v2/insertarFila")
+			.success(function(data){
+				deferer.resolve(data);	
+			})
+			.error(function(err){
+				deferer.reject(err)
+			});
+
+			//El método get regresa una promesa con dos métodos que usaremos, el success y el error, 
+			return promise;
+		} 
 
 	}
 })();

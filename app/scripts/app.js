@@ -14,12 +14,11 @@
 
   } 
 
-
   angular
     .module('gestor', ['ngRoute','gestor.controllers', 'gestor.services', 'gestor.directives','ui.bootstrap'])
     .config(config);
 
-   //gestor es el identificador de la aplicacion 
+   //'gestor' es el identificador de la aplicacion, aparece en index.html 
 
 })();
 
