@@ -3,7 +3,7 @@
 
 /*********************/
   angular
-    .module('gestor.services', [])
+    .module('gestor.services', ['ngResource'])
     .constant('BaseUrl', 'http://localhost/api')
    //defino el servicio subir imagen factory + funcion
     .service('upload', upload)
@@ -38,30 +38,24 @@
 		}	
 	}
 
-	function addArticulo($http, $q) //$http es un  servicio del core de angular, con el accedo a la Api
-	{
-		
-		return{
-			getAll: getAll 
-		}	
-		//creamos la función getAll, esta función solicitará mediante una petición GET 
-		//la inserción de una fila. 
-		function getAll() 
-		{
-			var defered = $q.defer();
-			var promise = defered.promise;
-			//utilizamos el método get, este método realizará una petición de tipo GET a la URL que se le pasa como parámetro.
-			$http.get("http://localhost/api/v2/insertarFila")
-			.success(function(data){
-				deferer.resolve(data);	
-			})
-			.error(function(err){
-				deferer.reject(err)
-			});
+	function addArticulo($http, $q) {  
+    return {
+        getAll: getAll
+    }
 
-			//El método get regresa una promesa con dos métodos que usaremos, el success y el error, 
-			return promise;
-		} 
+    function getAll () {
+        var defered = $q.defer();
+        var promise = defered.promise;
 
-	}
+        $http.get('http://localhost/api/v2/insertarFila')
+            .success(function(data) {
+                defered.resolve(data);
+            })
+            .error(function(err) {
+                defered.reject(err)
+            });
+
+        return promise;
+    }
+}
 })();

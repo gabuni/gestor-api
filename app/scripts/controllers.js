@@ -25,25 +25,20 @@
         }    
     }
 
-    // function HomeCtrl($scope)
-    // {
-      
-    //     addArticulo.getAll(function(data){
-    //         console.log(data);
-    //     }); 
-    //     //alert("Crear articulo");
-      
-    // }
-
-   function HomeCtrl(addArticulo) {  
-    addArticulo
-        .getAll()
-        .then(function(data){
-            $scope.elementos = data;
-        })
-        .catch(function(err){
-            // Tratar el error
-        })
+   
+   function HomeCtrl(addArticulo, $scope) {  
+    
+    
+     
+     $scope.crearArticulo = function(){  
+            addArticulo
+                .getAll()
+                .then(function(data) {
+                    $scope.elementos = data;
+                    console.log( $scope.elementos);
+                })
+               
+        }
   }
 
 //});
