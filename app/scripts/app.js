@@ -15,9 +15,9 @@
   } 
 
   angular
-    .module('gestor', ['ngRoute','gestor.controllers', 'gestor.services', 'gestor.directives','gestor.templates','ui.bootstrap','ngResource'])
+    .module('gestor', ['ngRoute','gestor.controllers', 'gestor.services', 'gestor.directives','ui.bootstrap','ngResource'])
     .config(config);
-
+//gestor.templates
    //'gestor' es el identificador de la aplicacion, aparece en index.html 
 
 })();
