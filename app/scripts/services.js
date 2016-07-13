@@ -7,7 +7,8 @@
     .constant('BaseUrl', 'http://localhost/api')
    //defino el servicio subir imagen factory + funcion
     .service('upload', upload)
-    .service('addArticulo', addArticulo);
+    .service('addArticulo', addArticulo)
+    .service('getAutor', getAutor);
 
 
   	function upload ($http, $q) 
@@ -39,23 +40,33 @@
 	}
 
 	function addArticulo($http, $q) {  
-    return {
-        getAll: getAll
-    }
+	    return {
+	        getAll: getAll
+	    }
 
-    function getAll () {
-        var defered = $q.defer();
-        var promise = defered.promise;
+    	function getAll () {
+	        var defered = $q.defer();
+	        var promise = defered.promise;
 
-        $http.get('http://localhost/api/v2/insertarFila')
-            .success(function(data) {
-                defered.resolve(data);
-            })
-            .error(function(err) {
-                defered.reject(err)
-            });
+	        $http.get('http://localhost/api/v2/insertarFila')
+	            .success(function(data) {
+	                defered.resolve(data);
+	            })
+	            .error(function(err) {
+	                defered.reject(err)
+	            });
+	        return promise;
+    	}
+	}
 
-        return promise;
-    }
-}
+	//forma de consumir con $resource en AngularJS
+	function getAutor($resource){
+		return $resource('http://localhost/api/v2/autorPages', {}, { get: { method: "GET", isArray: true } })
+		//1-la url donde queremos consumir
+		//2-podemos pasar variables que queramos pasar a la consulta
+		//3-a la función get le decimos el método, y, si es un array lo que devuelve
+		//ponemos isArray en true
+	}
+
+
 })();

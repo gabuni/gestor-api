@@ -5,8 +5,8 @@
    
     $routeProvider
       .when('/home', {
-        templateUrl: 'templates/home.tpl.html',
-        controller: 'HomeCtrl'
+        templateUrl: 'templates/get.tpl.html',
+        controller: 'GetAutorCtrl'
 
       })
 
